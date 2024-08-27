@@ -100,7 +100,7 @@ function lintSettings(document: MaybeDocument, diagnostics: Diagnostic[]) {
     lint(
         document, diagnostics,
         "unknown-setting",
-        /(?<=[gs]etSettingValue.*?\(\s*")[a-z0-9\-]+(?="[^\)]*\))/g,
+        /(?<=[gs]etSettingValue\s*(?:<.*>)?\s*\(\s*")[a-z0-9\-]+(?="[^\)]*\))/g,
         ({ text }) => {
             if (!(text in project.modJson.settings!)) {
                 return `Unknown setting ${text}`;
